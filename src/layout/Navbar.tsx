@@ -1,33 +1,25 @@
-import { Navbar as NavbarBs, Nav, Button, Container, Offcanvas, NavDropdown } from 'react-bootstrap'
+import { Navbar as NavbarBs, Nav, Button, Container, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 function Navbar() {
     return (
     <>
-    {['lg'].map((expand) => (
-    <NavbarBs key={expand} expand={expand}>
-        <Container fluid >
-        <NavbarBs.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+    <NavbarBs collapseOnSelect expand="false">
+        <Container className='d-flex flex-row justify-content-between' >
         <NavbarBs.Brand href="/">
             <img src="/public/images/logo_text_horizontal.png" alt="" height="48px" />
         </NavbarBs.Brand>
-        <NavbarBs.Offcanvas
-            id={`offcanvasNavbar-expand-${expand}`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-            placement="end"
-        >
-            <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Offcanvas
-            </Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
+        <div role="group" className='d-flex flex-row gap-3'>
+        <Button className='btn-sm' variant='outline-primary' type='button'>Sign Up</Button>
+        <NavbarBs.Toggle aria-controls="responsive-navbar-nav" />
+        </div>
+        <NavbarBs.Collapse id="responsive-navbar-nav">
+        <Nav className="justify-content-end flex-grow-1 pe-3">
             <Nav.Link to='/' as={NavLink}>Home</Nav.Link>
                 <Nav.Link to='/venues' as={NavLink}>Venues</Nav.Link>
                 <NavDropdown
                 title="Dropdown"
-                id={`offcanvasNavbarDropdown-expand-${expand}`}
+                id="collasible-nav-dropdown"
                 >
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
@@ -39,12 +31,9 @@ function Navbar() {
                 </NavDropdown.Item>
                 </NavDropdown>
             </Nav>
-            </Offcanvas.Body>
-        </NavbarBs.Offcanvas>
-        <Button className='btn-sm' variant='outline-primary' type='button'>Sign Up</Button>
+        </NavbarBs.Collapse>
         </Container>
     </NavbarBs>
-    ))}
     </>
     )
 }
