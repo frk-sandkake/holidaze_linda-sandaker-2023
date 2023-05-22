@@ -11,6 +11,10 @@ export function Footer() {
         </div>
         <footer  className="py-4">
             <Container>
+                <p className="fw-light fs-6">Created with ViteJS, ReactJS, TypeScript & Bootstrap</p>
+                <img src="/public/vite.svg" alt="ViteJS" />
+                <img src="/public/react.svg" alt="ReactJS" />
+                <p className="fw-light fs-6">Hosted by Netlify</p>
                 <small>©2023 Holidaze</small>
             </Container>
         </footer>
