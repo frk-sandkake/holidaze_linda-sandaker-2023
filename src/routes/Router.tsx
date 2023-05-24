@@ -4,8 +4,9 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import Venues from '../pages/Venues'
 import VenueID from '../pages/VenueID'
+import SearchResults from '../components/SearchResults'
 
-function Outlet() {
+function Router() {
 
   return (
    <>
@@ -14,12 +15,14 @@ function Outlet() {
       <Route index element={<Home />}/>
       <Route path='venues' element={<Venues />}/>
       <Route path='venue/:id' element={<VenueID />}/>
-      <Route path='*' element={<NotFound />}/>
+      <Route path="/search/:searchTerm"element={<SearchResults/>}
+  />
     </Route>
+    <Route path='*' element={<NotFound />}/>
    </Routes>
    </>
   )
 }
 
-export default Outlet
+export default Router
 

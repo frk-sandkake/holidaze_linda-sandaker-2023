@@ -8,7 +8,7 @@ function Layout() {
     return (
         <>
             <Header/>
-            <Container className="py-4 vh-100" h-100>
+            <Container className="py-4 vh-100">
                 <OutletRrd/>
             </Container>
             <Footer/>

@@ -7,7 +7,7 @@ function Navbar() {
     <NavbarBs collapseOnSelect expand="false">
         <Container className='d-flex flex-row justify-content-between' >
         <NavbarBs.Brand href="/">
-            <img src="/public/images/logo_text_horizontal.png" alt="" height="48px" />
+            <img src="/logo_text_horizontal.png" alt="" height="48px" />
         </NavbarBs.Brand>
         <div role="group" className='d-flex flex-row gap-3'>
         <Button className='btn-sm' variant='outline-primary' type='button'>Sign Up</Button>
