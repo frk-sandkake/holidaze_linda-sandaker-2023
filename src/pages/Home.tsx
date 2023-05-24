@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
+import { Counter } from "../components/Counter"
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -10,6 +11,7 @@ export default function Home() {
             <Button type='button' className="fw-bold" variant="primary" onClick={() => setCount((count) => count + 1)}>
                 count is {count}
             </Button>
+            <Counter/>
             <p>I'm a paragraph</p>
         </div>
     )
