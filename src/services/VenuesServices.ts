@@ -1,4 +1,4 @@
-import http from "../http-common"
+import http from "./http-common"
 import { VenueData } from "../types/VenueData"
 
 const getAll = () => {
