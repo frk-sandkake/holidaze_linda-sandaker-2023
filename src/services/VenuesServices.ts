@@ -1,41 +1,36 @@
 import http from "./http-common"
-import { VenueData } from "../types/VenueData"
+import { VenueResponse } from "../redux/types"
 
 const getAll = () => {
-    return http.get<Array<VenueData>>("/venues");
+    return http.get<Array<VenueResponse>>("/venues");
 };
 
-const get = (id: any) => {
-    return http.get<VenueData>(`/venues/${id}`);
+const getVenue = (id: string) => {
+    return http.get<VenueResponse>(`/venues/${id}`);
 };
 
-const create = (data: VenueData) => {
-    return http.post<VenueData>("/venues", data);
+const createVenue = (data: VenueResponse) => {
+    return http.post<VenueResponse>("/venues", data);
 };
 
-const update = (id: any, data: VenueData) => {
-    return http.put<any>(`/venues/${id}`, data);
+const updateVenue = (id: string, data: VenueResponse) => {
+    return http.put<VenueResponse>(`/venues/${id}`, data);
 };
 
-const remove = (id: any) => {
-    return http.delete<any>(`/venues/${id}`);
-};
-
-const removeAll = () => {
-    return http.delete<any>(`/venues`);
+const deleteVenue = (id: string) => {
+    return http.delete<VenueResponse>(`/venues/${id}`);
 };
 
 const findByName = (name: string) => {
-    return http.get<Array<VenueData>>(`/venues?name=${name}`);
+    return http.get<Array<VenueResponse>>(`/venues?sorts=${name}`);
 };
 
 const VenuesServices = {
     getAll,
-    get,
-    create,
-    update,
-    remove,
-    removeAll,
+    getVenue,
+    createVenue,
+    updateVenue,
+    deleteVenue,
     findByName,
 };
 

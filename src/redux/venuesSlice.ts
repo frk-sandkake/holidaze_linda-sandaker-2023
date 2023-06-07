@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../store/store";
-import { VenueData } from "../types/VenueData";
-import VenuesServices from "./VenuesServices";
+import { RootState } from "./store";
+import { VenueResponse } from "../redux/types";
+import VenuesServices from "../services/VenuesServices";
 
 
 interface VenuesState {
-  data: VenueData[];
+  data: VenueResponse[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
