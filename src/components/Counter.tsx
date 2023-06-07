@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../store/hooks'
-import { decrement, increment,  incrementByAmount, incrementAsync, incrementIfOdd, selectCount, } from '../store/counterSlice'
+import { useAppSelector, useAppDispatch } from '../redux/hooks'
+import { decrement, increment,  incrementByAmount, incrementAsync, incrementIfOdd, selectCount, } from '../redux/counterSlice'
 
 export function Counter() {
   // The `state` arg is correctly typed as `RootState` already
