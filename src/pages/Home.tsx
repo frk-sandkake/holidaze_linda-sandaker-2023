@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
 import { Counter } from "../components/Counter"
+import ProfileCard from "../components/ProfileCard"
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ export default function Home() {
             </Button>
             <Counter/>
             <p>I'm a paragraph</p>
+            <ProfileCard />
         </div>
     )
 }
