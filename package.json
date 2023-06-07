@@ -1,5 +1,10 @@
 {
   "name": "holidaze-ts_frk-sandkake",
+  "description": "Online booking website for lodging",
+  "keywords": ["vitejs", "react", "typescript", "redux", "axios", "online booking", "rest api"],
+  "author": "Linda Sandaker",
+  "repository": "https://github.com/frk-sandkake/holidaze_linda-sandaker-2023",
+  "homepage": "https://holi-daze.netlify.app/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
