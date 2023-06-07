@@ -1,6 +1,6 @@
 import Header from "./Header";
 import { Footer } from "./Footer";
-import { Outlet as OutletRrd } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 
@@ -9,7 +9,7 @@ function Layout() {
         <>
             <Header/>
             <Container className="py-4">
-                <OutletRrd/>
+                <Outlet/>
             </Container>
             <Footer/>
         </>

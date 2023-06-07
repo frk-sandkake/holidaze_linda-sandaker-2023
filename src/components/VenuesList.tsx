@@ -1,16 +1,15 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Container, Row, Spinner, Col } from "react-bootstrap";
-import { VenueData } from "../types/VenueData";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { fetchVenues, selectVenues, selectStatus, selectError } from "../services/venuesSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchVenues, selectVenues, selectStatus, selectError } from "../redux/venuesSlice";
 import { VenueCard } from "../components/VenueCard";
+import { VenueResponse } from "../redux/types";
 
 const VenuesList = () => {
   const dispatch = useAppDispatch();
   const venues = useAppSelector((selectVenues));
-  const status = useSelector((selectStatus));
-  const error = useSelector((selectError));
+  const status = useAppSelector((selectStatus));
+  const error = useAppSelector((selectError));
 
   useEffect(() => {
     if (status === "idle") {
@@ -35,7 +34,7 @@ const VenuesList = () => {
   return (
     <Container>
       <Row  md={2} xs={1} lg={3} xl={4} className="g-3">
-        {venues.map((venue: VenueData) => (
+        {venues.map((venue: VenueResponse) => (
           <Col key={venue.id} className="mb-4">
             <VenueCard venue={venue}/>
           </Col>

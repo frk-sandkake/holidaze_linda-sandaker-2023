@@ -1,10 +1,10 @@
 import { Card, Button } from 'react-bootstrap'
-import { VenueData } from "../types/VenueData"
 import { Link } from 'react-router-dom'
 import { FaWifi, FaParking, FaCoffee, FaDog, FaStar } from 'react-icons/fa';
+import { VenueResponse } from '../redux/types';
 
 interface VenueCardProps {
-    venue: VenueData
+    venue: VenueResponse
 }
 
 export const VenueCard: React.FC<VenueCardProps> = ({ venue }) =>
