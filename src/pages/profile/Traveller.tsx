@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/authSlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { logout } from "../../redux/authSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const Traveller = () => {
     const dispatch = useAppDispatch();

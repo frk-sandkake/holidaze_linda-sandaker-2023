@@ -1,50 +1,68 @@
 import Form from 'react-bootstrap/Form';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { loginUser } from '../redux/authSlice';
-import { Button } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { userLogin } from '../../redux/authSlice';
+import { Button, Spinner } from 'react-bootstrap';
+import { useLocation, useNavigate, useNavigation } from 'react-router-dom';
+// import { AuthUser } from '../redux/types';
 
 export type LoginFormInputs = {
-  [x: string]: any;
+  [x: string]: string;
   email: string;
   password: string;
 };
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } }
-  = useForm<LoginFormInputs>({ mode: "onChange"
+  = useForm<LoginFormInputs>({ mode: "onChange",
+  defaultValues: {
+    email: "",
+    password: "",
+  }
   });
+
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(false);
   const { error, status } = useAppSelector(state => state.auth);
   const location = useLocation()
   const navigate = useNavigate()
+  const navigation = useNavigation()
+  const from = location.state?.from || "/profile";
 
+  if (status === "loading") {
+    return (
+      <div className="d-flex justify-content-center mt-5">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
+  if (status === "failed") {
+    console.log("failed", error)
+    return <div className="text-center mt-5">{error}</div>;
+  }
+
+  const handleLogin = (data: LoginFormInputs) => {
+    dispatch(userLogin(data.email, data.password))
+    if (status === 'idle') {
+      navigate(from, { replace: true })
+    }
+  }
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    setIsLoading(true);
-    try {
-      await dispatch(loginUser(data));
-      if (status === "idle") {
-        const token = data.accessToken;
-        localStorage.setItem("auth", token as string);
-        navigate('/profile');
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Login failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    handleLogin(data)
   };
 
   return (
     <>
       {
         location.state?.message &&
-        <h3 className="login-error">{location.state.message}</h3>
+        <h3>{location.state.message}</h3>
+      }
+      {
+        error &&
+        <h3>{error}</h3>
       }
       <Form onSubmit={handleSubmit(onSubmit)}
         className='d-flex flex-column gap-4'
@@ -88,7 +106,14 @@ const LoginForm = () => {
           {errors.password && <span role="alert">{errors.password.message}</span>}
         </Form.Floating>
         {error && <p>{error}</p>}
-        <Button type="submit" variant="primary" disabled={isLoading}>{isLoading ? 'Loading...' : 'Login'}</Button>
+        <Button type="submit" variant="primary"
+          disabled={navigation.state === "submitting"}
+        >
+          {navigation.state === "submitting"
+              ? "Logging in..."
+              : "Log in"
+          }
+        </Button>
       </Form>
     </>
   );

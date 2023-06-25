@@ -1,7 +1,8 @@
 import http from "./http-common"
 import { VenueResponse } from "../redux/types"
 
-const getAll = () => {
+
+const getAllVenues = () => {
     return http.get<Array<VenueResponse>>("/venues");
 };
 
@@ -26,7 +27,7 @@ const findByName = (name: string) => {
 };
 
 const VenuesServices = {
-    getAll,
+    getAllVenues,
     getVenue,
     createVenue,
     updateVenue,
@@ -35,3 +36,5 @@ const VenuesServices = {
 };
 
 export default VenuesServices;
+
+

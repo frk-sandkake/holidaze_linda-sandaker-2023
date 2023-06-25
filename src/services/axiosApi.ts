@@ -1,6 +1,6 @@
 import axios from "axios";
-import { LoginFormInputs } from "../form/LoginForm";
-import { SignupFormInputs } from "../form/SignupForm";
+import { LoginFormInputs } from "../pages/signup-login/LoginForm";
+import { SignupFormInputs } from "../pages/signup-login/SignupForm";
 
 // Set the base URL for all API requests
 axios.defaults.baseURL = "https://api.noroff.dev/api/v1/holidaze";
@@ -49,9 +49,9 @@ export const fetchLogin = async (credentials: any) => {
 };
 
 // Get the user profile
-export const getUserProfile = async () => {
+export const getUserProfile = async (name: string) => {
   try {
-    const response = await axios.get(API.profile);
+    const response = await axios.get(`${API.profile}/${name}`);
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === "Unauthorized") {

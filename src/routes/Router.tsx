@@ -2,34 +2,64 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import Layout from '../layout/Layout'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
-import Venues from '../pages/Venues'
-import VenueID from '../pages/VenueID'
-import Traveller from '../pages/Traveller'
+import Venues from "../pages/venues/Venues"
+import {VenueID} from '../pages/venues/VenueID'
+import Traveller from '../pages/profile/Traveller'
 import Host from '../pages/Host'
-import SignUp from '../pages/Signup'
-import LogIn from '../pages/Login'
-import Profile from '../pages/Profile'
-import Error from '../components/Error'
-import ErrorBoundary from '../components/ErrorBoundary'
-import AuthRequired from './AuthRequired'
+import SignUp from '../pages/signup-login/Signup'
+import Login from '../pages/signup-login/Login'
+import Profile from '../pages/profile/Profile'
+import Error from '../auth-error-handlers/Error'
+import ErrorBoundary from '../auth-error-handlers/ErrorBoundary'
+import {AuthRequired} from '../auth-error-handlers/AuthRequired'
+import { AuthLayout } from '../pages/signup-login/AuthLayout'
+import About from '../pages/About'
+
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route index element={<Home />}/>
-      <Route path='venues' element={<Venues />} />
-      <Route path='venue/:id' element={<VenueID />}/>
-      <Route element={<AuthRequired />}>
-        <Route path='profile' element={<Profile />}/>
-        <Route path='traveller' element={<Traveller />} />
-        <Route path='host' element={<Host />} />
+      <Route path='about' element={<About />}/>
+
+      <Route element={<AuthLayout />}>
+        <Route path='signup' element={<SignUp />}/>
+        <Route
+          path='login'
+          element={<Login />}
+          errorElement={<Error />}
+        />
       </Route>
-      <Route path='signup' element={<SignUp />}/>
-      <Route path='login' element={<LogIn />}/>
+      <Route
+        path='venues'
+        element={<Venues />}
+        errorElement={<Error />}
+      />
+      <Route
+        path='venues/:id'
+        element={<VenueID />}
+        errorElement={<Error />}
+      />
+
+      <Route element={<AuthRequired />}>
+        <Route
+          path='profile'
+          element={<Profile />}
+          errorElement={<Error />}
+        />
+        <Route path='traveller' element={<Traveller />} />
+        <Route
+          path='host'
+          element={<Host />}
+          errorElement={<Error />}
+        />
+      </Route>
+
       <Route path='*' element={
         <ErrorBoundary errorElement={<Error />}>
           <NotFound />
         </ErrorBoundary>
-      }/>
+      }
+      />
     </Route>
   ))
 

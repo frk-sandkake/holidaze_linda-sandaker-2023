@@ -1,9 +1,9 @@
 import { Form, Button } from 'react-bootstrap';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { registerUser } from '../redux/authSlice';
+import { registerUser } from '../../redux/authSlice';
 
 export type SignupFormInputs = {
   [x: string]: any;
@@ -30,13 +30,11 @@ const SignupForm = () => {
     try {
       await dispatch(registerUser(data));
       if (status === "idle") {
-        const token = data.accessToken;
-        localStorage.setItem("auth", token as string);
-        navigate('/profile');
+
+        navigate('/login');
       }
     } catch (error) {
-      console.error(error);
-      alert('Login failed. Please try again.');
+      alert(error);
     } finally {
       setIsLoading(false);
     }

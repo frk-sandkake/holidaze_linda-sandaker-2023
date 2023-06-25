@@ -1,4 +1,4 @@
-import SignupForm from "../form/SignupForm"
+import SignupForm from "./SignupForm"
 
 // import { Spinner } from "react-bootstrap";
 
