@@ -20,7 +20,7 @@ function NavbarBs() {
 
     return (
     <>
-    <Navbar collapseOnSelect expand="false">
+    <Navbar collapseOnSelect expand="false" variant='dark'>
         <Container className='d-flex flex-row justify-content-between align-items-center fw-bold' >
         <Navbar.Brand href="/">
             <img src="/Logo_text_horizontal.png" alt="" width="120px" />
@@ -50,8 +50,7 @@ function NavbarBs() {
         <Nav className="flex-row justify-content-around pe-3">
             <Nav.Link to='/' as={NavLink}>Home</Nav.Link>
             <Nav.Link to='/venues' as={NavLink}>Venues</Nav.Link>
-            <Nav.Link to='/profile' as={NavLink}>Profile</Nav.Link>
-            <Nav.Link to='/signup' as={NavLink}>Sign Up</Nav.Link>
+            <Nav.Link to='/about' as={NavLink}>About</Nav.Link>
         </Nav>
         <Container className="d-flex justify-content-center p-2" role="row" aria-label="Search form">
             <Search/>

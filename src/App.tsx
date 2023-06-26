@@ -2,27 +2,16 @@ import { RouterProvider } from 'react-router-dom'
 import './App.css'
 import router from './routes/Router'
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { AuthUser } from './redux/types';
-import { setUser } from './redux/authSlice';
+import { useAppSelector } from './redux/hooks';
+import { selectCurrentUser } from './redux/authSlice';
 
 
 function App() {
-  const { user } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const userJson = localStorage.getItem('user');
-    if (userJson) {
-      const user: AuthUser = JSON.parse(userJson);
-      dispatch(setUser(user));
-    }
-  }, [dispatch]);
-
+const currentUser = useAppSelector(selectCurrentUser)
   useEffect(() => {
     const handleUnload = () => {
-      if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
+      if (currentUser!) {
+        localStorage.setItem('user', JSON.stringify(currentUser));
       }
     };
 
@@ -31,7 +20,7 @@ function App() {
     return () => {
       window.removeEventListener('beforeunload', handleUnload);
     };
-  }, [user]);
+  }, [currentUser]);
 
   return (
     <>

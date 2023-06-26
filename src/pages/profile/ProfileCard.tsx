@@ -1,12 +1,22 @@
 import { Container, Card, Button } from 'react-bootstrap';
-import {  useAppSelector } from '../redux/hooks';
-import { RootState } from '../redux/store';
+import { useAppSelector } from '../../redux/hooks';
+import { RootState } from '../../redux/store';
+import { useState } from 'react';
+import UpdateAvatarForm from './UpdateAvatar';
 //import { toggleAvatarEdit } from '../redux/profileSlice';
 
 const ProfileCard = () => {
-    // const dispatch = useAppDispatch();
+    const [showForm, setShowForm] = useState(false);
+
+    //const dispatch = useAppDispatch();
   const user = useAppSelector((state: RootState) => state.auth.user);
 
+  const handleUpdateAvatar = () => {
+
+    // data:  {avatar: string}
+    // dispatch(UpdateAvatarForm(data));
+     setShowForm(false);
+   };
   const avatarUrl = user?.avatar || '/images/2.png';
     return (
         <div className="">
@@ -22,11 +32,11 @@ const ProfileCard = () => {
                         style={{ width: '8rem' }}
                         className='btn-sm'
                         variant="outline-secondary"
-                        onClick={() => {
-                        }}
+                        onClick={() => setShowForm(!showForm)}
                         >
-                        Edit Avatar
+                       {showForm ? "Close Form" : "Update Avatar"}
                     </Button>
+                    {showForm && <UpdateAvatarForm onSubmit={handleUpdateAvatar} />}
                 </Card.Body>
             </Card>
             </Container>

@@ -1,9 +1,14 @@
-//import ProfileCard from "../components/ProfileCard";
+import ProfileCard from "./profile/ProfileCard";
+import { useAppSelector } from "../redux/hooks";
 
 const Host = () => {
+    const {user} = useAppSelector((state) => state.auth);
+
     return (
         <>
-        <h1>Hello Host</h1>
+        <h1>Hello Host {user?.name}</h1>
+        <p>Is venueManager {user?.venueManager}</p>
+        <ProfileCard />
         </>
     )
 }

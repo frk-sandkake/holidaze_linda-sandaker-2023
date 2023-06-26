@@ -6,16 +6,13 @@ interface RouteError {
     statusText?: string;
 }
 
-function Error() {
+export default function Error() {
     const error = useRouteError() as RouteError;
-    const { message, status, statusText } = error || { message: "An error occurred." }
 
     return (
         <>
-            <h1>Error {status}: {message}</h1>
-            <p>{statusText}</p>
+            <h1>Error {error.message}</h1>
+            <pre>{error.status} - {error.statusText}</pre>
         </>
     )
 }
-
-export default Error;

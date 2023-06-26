@@ -4,7 +4,8 @@ message: string;
 }
 
 export interface AuthUser {
-    id: number;
+    role: string;
+    id: string;
     name: string;
     email: string;
     password: string;
@@ -49,6 +50,7 @@ export interface SignupUserRequest {
 }
 
 export interface LoginUserRequest {
+    [x: string]: any;
     email: string;
     password: string;
 }

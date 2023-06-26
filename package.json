@@ -1,7 +1,15 @@
 {
   "name": "holidaze-ts_frk-sandkake",
   "description": "Online booking website for lodging",
-  "keywords": ["vitejs", "react", "typescript", "redux", "axios", "online booking", "rest api"],
+  "keywords": [
+    "vitejs",
+    "react",
+    "typescript",
+    "redux",
+    "axios",
+    "online booking",
+    "rest api"
+  ],
   "author": "Linda Sandaker",
   "repository": "https://github.com/frk-sandkake/holidaze_linda-sandaker-2023",
   "homepage": "https://holi-daze.netlify.app/",
@@ -26,8 +34,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
-    "@types/react-bootstrap": "^0.32.32",
-    "@types/redux-thunk": "^2.1.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
@@ -37,13 +43,13 @@
     "react-hook-form": "^7.44.1",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.1",
-    "redux": "^4.2.1",
-    "sass": "^1.62.1"
+    "react-router-dom": "^6.11.1"
   },
   "devDependencies": {
+    "@types/node": "^20.3.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-bootstrap": "^0.32.32",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
@@ -53,6 +59,8 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "typescript": "^5.0.2",
+    "redux-devtools-extension": "^2.13.9",
+    "sass": "^1.62.1",
     "vite": "^4.3.2"
   }
 }
